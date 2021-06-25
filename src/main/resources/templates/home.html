@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Ferrari</title>
+     <link rel="stylesheet" th:href="@{/styles.css}" />
+  </head>
+  
+  <body>
+    <h1>Welcome to ferrari designing site</h1>
+    <img th:src="@{/images/Red_Ferrari.jpg}"  />
+    <form method="POST" th:action="@{/logout}" id="logoutForm">
+      <input type="submit" value="Logout"/>
+    </form>
+    
+    <a th:href="@{/design}" id="design">Order your custom Ferrari</a>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    initialization-mode: always
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/ferrdb
+    username: tac_admn
+    password: taco
+  thymeleaf:
+    cache: false

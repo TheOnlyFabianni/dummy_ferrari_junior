@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Ferrari</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+  </head>
+  
+  <body>
+    <h1>Design your ferrari!</h1>
+    <h2>Do you want dream car, <span th:text="${user.fullname}">NAME</span>?</h2>
+    <img th:src="@{/images/Red_Ferrari.jpg}" />
+        
+    <form th:method="POST" th:object="${design}" th:action="@{/design}">
+
+    <span class="validationError"
+          th:if="${#fields.hasErrors('specifications')}" 
+          th:errors="*{specifications}">SPECIFICATION Error</span>
+
+    <div class="grid">
+      <div class="specification-group" id="btype">
+      <h3>Car body type:</h3>
+      <div th:each="specification : ${btype}">
+        <input name="specifications" type="checkbox" th:value="${specification.id}" />
+        <span th:text="${specification.name}">SPECIFICATION</span><br/>
+      </div>
+      </div>
+
+    <div class="specification-group" id="color">
+      <h3>Pick your color:</h3>
+      <div th:each="specification : ${color}">
+        <input name="specifications" type="checkbox" th:value="${specification.id}" />
+        <span th:text="${specification.name}">SPECIFICATION</span><br/>
+      </div>
+      </div>
+  
+    <div class="specification-group" id="tyres">
+      <h3>Choose your tyres:</h3>
+      <div th:each="specification : ${tyres}">
+        <input name="specifications" type="checkbox" th:value="${specification.id}" />
+        <span th:text="${specification.name}">SPECIFICATION</span><br/>
+      </div>
+      </div>
+        
+    <div class="specification-group" id="engine">
+      <h3>Determine your engine:</h3>
+      <div th:each="specification : ${engine}">
+        <input name="specifications" type="checkbox" th:value="${specification.id}" />
+        <span th:text="${specification.name}">SPECIFICATION</span><br/>
+      </div>
+      </div>
+      
+    <div class="specification-group" id="body">
+      <h3>Select body material:</h3>
+      <div th:each="specification : ${body}">
+        <input name="specifications" type="checkbox" th:value="${specification.id}" />
+        <span th:text="${specification.name}">SPECIFICATION</span><br/>
+      </div>
+      </div>
+      </div>
+      
+      <div>
+
+
+      <h3>Name your car:</h3>
+      <input type="text" th:field="*{name}"/>
+      <span class="validationError"
+            th:if="${#fields.hasErrors('name')}" 
+            th:errors="*{name}">Name Error</span>
+      <br/>
+      
+      <button type="submit">Submit your specifications</button>
+      </div>
+    </form>
+  </body>
+</html>
